@@ -24,7 +24,7 @@ App.init = (function() {
 			.join("")}`;
 
 		$("#drop").classList.add("hidden");
-		$("footer").classList.add("hasFiles");
+		$(".footer-upload-files").classList.add("hasFiles");
 		$(".importar").classList.add("active");
 		$(".uploadFile").classList.add("active");
 		setTimeout(() => {
@@ -57,7 +57,7 @@ App.init = (function() {
 	};
 	$("#drop").ondrop = evt => {
 		$("input[type=file]").files = evt.dataTransfer.files;
-		$("footer").classList.add("hasFiles");
+		$(".footer-upload-files").classList.add("hasFiles");
 		$("#drop").classList.remove("active");
 		evt.preventDefault();
 	};
@@ -65,7 +65,7 @@ App.init = (function() {
 	//upload more
 	$(".importar").addEventListener("click", () => {
 		$(".list-files").innerHTML = "";
-		$("footer").classList.remove("hasFiles");
+		$(".footer-upload-files").classList.remove("hasFiles");
 		$(".importar").classList.remove("active");
 		$(".uploadFile").classList.remove("active");
 		setTimeout(() => {
