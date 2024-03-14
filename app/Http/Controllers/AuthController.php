@@ -20,4 +20,12 @@ class AuthController extends Controller
             return redirect()->back()->with('error', 'Sai tài khoản hoặc mật khẩu');
         }
     }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        $request->session()->flush();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login.getLogin');
+    }
 }
