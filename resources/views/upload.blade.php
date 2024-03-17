@@ -1,10 +1,10 @@
 @extends('layout.master')
 @section('title', 'UPLOAD FILES')
 @section('css')
-    <link rel="stylesheet" href="{{ asset('assets/upload/upload.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/upload.css') }}">
 @endsection
 @section('content')
-    <main>
+    {{-- <main> --}}
         <form class="upload" action="{{ route('upload.postUpload') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="upload-files">
@@ -38,8 +38,8 @@
                 </div>
             </div>
         </form>
-    </main>
+    {{-- </main> --}}
 @endsection
 @push('js')
-    <script src="{{ asset('assets/upload/upload.js') }}"></script>
+    <script src="{{ asset('assets/js/upload.js') }}"></script>
 @endpush
