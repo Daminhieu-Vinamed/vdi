@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
             'name' => 'required',
             'username' => 'required|unique:users,username',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8',
+            'password' => 'required|min:3',
             'password_confirmation' => 'required_with:password|same:password'
         ];
     }
@@ -39,7 +39,7 @@ class UserRequest extends FormRequest
             'email.email' => 'Email invalidate',
             'email.unique' => 'Email already exists',
             'password.required' => 'Required password',
-            'password.min' => 'Password must be at least 8 characters',
+            'password.min' => 'Password must be at least 3 characters',
             'password_confirmation.required_with' => 'Required password confirmation',
             'password_confirmation.same' => 'Re-password not same password',
         ];
