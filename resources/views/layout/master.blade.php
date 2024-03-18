@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>SB Admin 2 - Dashboard</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link href="{{ asset("assets/vendor/fontawesome/css/all.min.css") }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="{{ asset("assets/css/bootstrap.min.css") }}" rel="stylesheet">
@@ -22,19 +23,14 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
+                    <div class="btn btn-link d-md-none rounded-circle mr-3">
+                        <img src="{{ asset('assets/img/logo-icon.png') }}" height="30px" alt="">
+                    </div>
 
                     <!-- Topbar Search -->
-                    <form 
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                                <img src="{{ asset('assets/img/LOGO-VINAMED.png') }}" width="220" height="30" alt="">
-                        </div>
-                    </form>
+                    <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <img src="{{ asset('assets/img/logo.png') }}" height="40px" alt="">
+                    </div>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -43,9 +39,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="{{ Auth::user()->gender === config('constants.gender.female') ? asset('assets/img/female.svg') : asset('assets/img/male.svg') }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -63,7 +59,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="{{ route('logout') }}">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -75,18 +71,19 @@
                 </nav>
                 <!-- End of Topbar -->
             </div>
-            <main class="d-flex justify-content-center">
+            <main class="d-flex justify-content-center p-4">
                 @yield('content')
             </main>
-            <footer class="sticky-footer bg-white mt-4">
+            <footer class="sticky-footer bg-vmed mt-4">
                 <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                    <div class="copyright text-center my-auto text-white">
+                        <span>Website Developer: IT VINAMED</span>
                     </div>
                 </div>
             </footer>
         </div>
     </div>
+    <script src="{{ asset("assets/js/>swalalert2@11.js") }}"></script>
     <script src="{{ asset("assets/vendor/jquery/jquery.min.js") }}"></script>
     <script src="{{ asset("assets/vendor/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
     @stack('js')

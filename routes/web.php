@@ -12,6 +12,7 @@ Route::prefix('/')->group(function (){
             Route::post('/upload',[UploadController::class,'postUpload'])->name('postUpload');
         });
         Route::get('/logout',[AuthController::class,'logout'])->name('logout');
+        Route::get('/notification',[UploadController::class,'notification'])->name('notification');
     });
 
     Route::middleware('checkLogout')->name('login.')->group(function (){

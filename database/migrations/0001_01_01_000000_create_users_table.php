@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->integer('role')->comment("1:Client, 2:Admin, 3:Super Admin");
             $table->integer('status')->comment("1:Unlock, 2:Lock");
+            $table->integer('gender')->comment("1:Male, 2:Female");
             $table->rememberToken();
             $table->timestamps();
         });

@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             'password' => 'Abcd@123',
             'role' => 3,
             'status' => 1,
+            'gender' => 1,
         ]);
     }
 }
