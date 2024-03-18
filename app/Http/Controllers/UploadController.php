@@ -16,7 +16,7 @@ class UploadController extends Controller
     public function postUpload(Request $request)
     {
         foreach ($request->file('files') as $file) {
-            Storage::disk('d')->putFileAs(Auth::user()->username, $file, $file->getClientOriginalName());
+            Storage::disk('f')->putFileAs(Auth::user()->username, $file, $file->getClientOriginalName());
         }
     }
 }
