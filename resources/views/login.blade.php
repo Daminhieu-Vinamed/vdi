@@ -4,6 +4,7 @@
  <head> 
   <meta charset="UTF-8"> 
   <title>VINAMED</title>
+  {{ Html::favicon('favicon.ico') }}
   <link rel="stylesheet" href="./style.css"> 
   <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
  </head> 
