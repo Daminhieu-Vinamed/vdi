@@ -17,15 +17,7 @@ class CheckLoginMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check()) {
-            if (Auth::user()->status === 1) {
-                return $next($request);
-            } else {
-                Auth::logout();
-                $request->session()->flush();
-                $request->session()->invalidate();
-                $request->session()->regenerateToken();
-                return redirect()->route('login.getLogin')->with('error', 'Tài khoản của bạn đã bị khóa !');
-            }
+            return $next($request);
         }
         return redirect()->route('login.getLogin')->with('error', 'Yêu cầu bạn hãy đăng nhập !');
     }

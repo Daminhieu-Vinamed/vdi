@@ -16,13 +16,11 @@ class DatabaseSeeder extends Seeder
         User::factory(1)->create();
 
         User::factory()->create([
-            'name' => 'Demo',
-            'username' => 'demo03',
-            'email' => 'demo03@caotoc24.com',
+            'name' => 'Admin',
+            'username' => 'admin',
+            'email' => 'admin@caotoc24.com',
             'password' => 'Abcd@123',
-            'role' => 3,
-            'status' => 1,
-            'gender' => 1,
+            'role' => 2,
         ]);
     }
 }

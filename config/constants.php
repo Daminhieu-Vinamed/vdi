@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'gender' => [
-        'female' => 1,
-        'male' => 2,
+    'number' => [
+        'one' => 1,
+        'two' => 2,
     ]
 ];
