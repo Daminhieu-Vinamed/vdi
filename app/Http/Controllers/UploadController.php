@@ -18,7 +18,7 @@ class UploadController extends Controller
         foreach ($request->file('files') as $file) {
             Storage::disk('f')->putFileAs(Auth::user()->username, $file, $file->getClientOriginalName());
         }
-        return redirect()->route('notification')->with(['success' => 'SUCCESS']);
+        return redirect()->route('notification')->with('success', 'UPLOAD FILES SUCCESSFULLY !');
     }
 
     public function notification()
@@ -26,7 +26,7 @@ class UploadController extends Controller
         $success = session()->get('success');
         if (!empty($success)) {
             session()->forget('success');
-            return view('notification');
+            return view('notification', compact("success"));
         } else {
             return redirect()->route('upload.getUpload');
         }
