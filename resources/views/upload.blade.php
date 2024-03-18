@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/upload.css') }}">
 @endsection
 @section('content')
-    {{-- <main> --}}
         <form class="upload" action="{{ route('upload.postUpload') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="upload-files">
@@ -38,8 +37,8 @@
                 </div>
             </div>
         </form>
-    {{-- </main> --}}
 @endsection
 @push('js')
+    {{-- <script src="{{ asset('assets/js/upload-call-ajax.js') }}"></script> --}}
     <script src="{{ asset('assets/js/upload.js') }}"></script>
 @endpush
