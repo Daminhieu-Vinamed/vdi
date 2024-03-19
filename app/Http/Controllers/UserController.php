@@ -7,9 +7,20 @@ use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
 {
+    public function list()
+    {
+        return view('user');
+    }
+    public function anyData()
+    {
+        $users = User::select('id', 'name', 'username', 'email')->where('role', '!=', config('constants.number.two'))->orderBy('id', 'desc')->get();
+        return DataTables::of($users)->make(true);
+    }
+
     public function create(UserRequest $request)
     {
         $user = new User();
