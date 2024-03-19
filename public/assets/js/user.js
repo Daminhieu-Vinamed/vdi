@@ -2,7 +2,7 @@ $(document).ready(function() {
   var tableUser = $('.userTable').DataTable({
     ajax: {
         type: 'get',
-        url: baseUrl + '/user/anyData',
+        url: baseUrl + 'user/anyData',
     },
     columns: [
         { data: 'id', name: 'id' },
@@ -40,7 +40,7 @@ $(document).ready(function() {
       var password = $("input[name='password']").val();
       var re_password = $("input[name='re_password']").val();
       $.ajax({
-          url: baseUrl + "/user/create" ,
+          url: baseUrl + "user/create" ,
           type:'POST',
           headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

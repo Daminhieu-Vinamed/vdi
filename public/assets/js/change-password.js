@@ -1,10 +1,10 @@
 jQuery(document).ready(function($){
-    jQuery('.change-password').click(function () {     
+    jQuery('.change-password').click(function () {
         const current_password = $("input[name='current_password']").val();
         const new_password = $("input[name='new_password']").val();
         const new_re_password = $("input[name='new_re_password']").val();     
         $.ajax({
-            url: baseUrl + "/change-password" ,
+            url: baseUrl + "change-password" ,
             type:'POST',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

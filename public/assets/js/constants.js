@@ -1,4 +1,4 @@
-var baseUrl = window.location.origin;
+var baseUrl = window.location.origin + '/vdi-upload-files/public/';
 
 var Toast = Swal.mixin({
     toast: true,
