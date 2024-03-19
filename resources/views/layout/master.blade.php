@@ -47,24 +47,20 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                {{-- <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a> --}}
                                 @if (Auth::user()->role === config('constants.number.two'))
-                                    <a class="dropdown-item" href="{{ route('user.create') }}">
-                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Create user
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#createUserModal">
+                                        <i class="fas fa-plus-square fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Tạo tài khoản
                                     </a>
-                                    <div class="dropdown-divider"></div>
                                 @endif
-                                {{-- <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a> --}}
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#changePasswordModal">
+                                    <i class="fas fa-unlock-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Đổi mật khẩu
+                                </a>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                    Đăng xuất
                                 </a>
                             </div>
                         </li>
@@ -86,9 +82,103 @@
             </footer>
         </div>
     </div>
-    <script src="{{ asset("assets/js/>swalalert2@11.js") }}"></script>
+    <!-- Change password Modal-->
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ĐỔI MẬT KHẨU</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <div class="col">
+                            <label for="current-password">MẬT KHẨU HIỆN TẠI</label>
+                            <input type="password" class="form-control" name="current_password" aria-describedby="current-password" placeholder="Enter current password">
+                            <small class="current-password-error form-text text-danger"></small>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="col">
+                            <label for="new-password">MẬT KHẨU MỚI</label>
+                            <input type="password" class="form-control" name="new_password" aria-describedby="new-password" placeholder="Enter new password">
+                            <small class="new-password-error form-text text-danger"></small>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="col">
+                            <label for="new-re-password">XÁC NHẬN MẬT KHẨU MỚI</label>
+                            <input type="password" class="form-control" name="new_re_password" aria-describedby="new-re-password" placeholder="Enter new re-password">
+                            <small class="new-re-password-error form-text text-danger"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary change-password" type="button">ĐỔI</button>
+                    <button class="btn btn-danger" type="button" data-dismiss="modal">HỦY</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create User Modal-->
+    <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">TẠO TÀI KHOẢN NGƯỜI DÙNG</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col">
+                          <label for="name">HỌ VÀ TÊN</label>
+                          <input type="text" class="form-control" id="name" name="name" aria-describedby="name" placeholder="Enter full name" value="{{ old('name') }}">
+                            <small id="name" class="name-error form-text text-danger"></small>
+                        </div>
+                        <div class="col">
+                          <label for="username">TÊN ĐĂNG NHẬP</label>
+                          <input type="text" class="form-control" id="username" name="username" aria-describedby="username" placeholder="Enter username" value="{{ old('username') }}">
+                            <small id="username" class="username-error form-text text-danger"></small>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="email">EMAIL</label>
+                            <input type="text" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Enter email" value="{{ old('email') }}">
+                            <small id="email" class="email-error form-text text-danger"></small>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="password">MẬT KHẨU</label>
+                            <input type="password" class="form-control" id="password" name="password" aria-describedby="password" placeholder="Enter password">
+                            <small id="password" class="password-error form-text text-danger"></small>
+                          </div>
+                          <div class="col">
+                            <label for="re-password">XÁC NHẬN KHẨU KHẨU</label>
+                            <input type="password" class="form-control" id="re-password" name="re_password" aria-describedby="re-password" placeholder="Enter re-password">
+                            <small id="re-password" class="re-password-error form-text text-danger"></small>
+                          </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary create-user" type="button">TẠO MỚI</button>
+                    <button class="btn btn-danger" type="button" data-dismiss="modal">HỦY</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="{{ asset("assets/vendor/jquery/jquery.min.js") }}"></script>
     <script src="{{ asset("assets/vendor/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
+    <script src="{{ asset("assets/js/swalalert2@11.js") }}"></script>
+    <script src="{{ asset("assets/js/user.js") }}"></script>
     @stack('js')
 </body>
 </html>

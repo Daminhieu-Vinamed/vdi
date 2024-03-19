@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function create()
-    {
-        return view('create-user');
-    }
-    public function store(UserRequest $request)
+    public function create(UserRequest $request)
     {
         $user = new User();
         $user->fill($request->all());
@@ -21,6 +18,15 @@ class UserController extends Controller
         $user->role = config('constants.number.one');
         $user->email_verified_at = now();
         $user->save();
-        return redirect()->route('notification')->with('success', 'CREATE USER SUCCESSFULLY !');
+        return response()->json(['notification' => 'TẠO TÀI KHOẢN THÀNH CÔNG !']);
+    }
+
+    public function changePassword(ChangePasswordRequest $request)
+    {
+        $user = new User();
+        $userChangePassword = $user->where('id', Auth::user()->id)->first();
+        $userChangePassword->fill($request->all());
+        $userChangePassword->save();
+        return response()->json(['notification' => 'ĐỔI MẬT KHẨU THÀNH CÔNG !']);
     }
 }

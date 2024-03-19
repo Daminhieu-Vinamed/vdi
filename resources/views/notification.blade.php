@@ -9,10 +9,6 @@
             <i class="checkmark">✓</i>
         </div>
         <h1 class="text-center">{{$success}}</h1> 
-        @if ($success === 'UPLOAD FILES SUCCESSFULLY !')
-            <p>You have successfully uploaded the file, <a href="{{ route('upload.getUpload') }}">click here</a> to return if you want to upload the file again</p>
-        @elseif($success === 'CREATE USER SUCCESSFULLY !')
-            <p>You have create user successfully, <a href="{{ route('user.create') }}">click here</a> to return if you want to create user again</p>
-        @endif
+            <p>Bạn đã tải tài liệu lên thành công, <a href="{{ route('upload.getUpload') }}">nhấn vào đây</a> để quay lại nếu bạn muốn tải tài liệu lên tiếp</p>
     </div>
 @endsection
