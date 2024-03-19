@@ -1,4 +1,5 @@
 jQuery(document).ready(function($){
+    var baseUrl = window.location.href;
     var Toast = Swal.mixin({
         toast: true,
         position: 'top-right',
@@ -20,7 +21,7 @@ jQuery(document).ready(function($){
         var password = $("input[name='password']").val();
         var re_password = $("input[name='re_password']").val();
         $.ajax({
-            url: "/user/create" ,
+            url: baseUrl + "user/create" ,
             type:'POST',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -72,7 +73,7 @@ jQuery(document).ready(function($){
         const new_password = $("input[name='new_password']").val();
         const new_re_password = $("input[name='new_re_password']").val();     
         $.ajax({
-            url: "/user/change-password" ,
+            url: baseUrl + "user/change-password" ,
             type:'POST',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
