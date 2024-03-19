@@ -39,6 +39,5 @@
         </form>
 @endsection
 @push('js')
-    {{-- <script src="{{ asset('assets/js/upload-call-ajax.js') }}"></script> --}}
     <script src="{{ asset('assets/js/upload.js') }}"></script>
 @endpush

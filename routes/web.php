@@ -15,10 +15,12 @@ Route::prefix('/')->group(function (){
 
         Route::get('logout',[AuthController::class,'logout'])->name('logout');
         Route::get('notification',[UploadController::class,'notification'])->name('notification');
+        Route::post('change-password',[UserController::class,'changePassword'])->name('change-password');
 
-        Route::prefix('user')->name('user.')->group(function (){
+        Route::middleware('checkRole')->prefix('user')->name('user.')->group(function (){
+            Route::get('/',[UserController::class,'list'])->name('list');
+            Route::get('anyData',[UserController::class,'anyData'])->name('anyData');
             Route::post('create',[UserController::class,'create'])->name('create');
-            Route::post('change-password',[UserController::class,'changePassword'])->name('change-password');
         });
     });
 
