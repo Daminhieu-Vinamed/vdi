@@ -17,22 +17,22 @@
                 <div class="body" id="drop">
                     <i class="fa fa-file-text-o pointer-none" aria-hidden="true"></i>
                     <p class="pointer-none">
-                        <b>Drag and drop</b> files here <br /> or <a href="" id="triggerFile">browse</a> to begin the upload
+                        Nhấn <a href="" id="triggerFile"><b>vào đây</b></a> để tải tài liệu
                     </p>
                     <input type="file" multiple="multiple" name="files[]" />
                 </div>
                 <div class="footer-upload-files">
                     <div class="divider">
                     <span>
-                        <AR>FILES</AR>
+                        <AR>TÀI LIỆU</AR>
                     </span>
                     </div>
                     <div class="list-files">
                     <!--   template   -->
                     </div>
                     <div>
-                        <button class="importar" type="button">UPDATE FILES</button>
-                        <button class="uploadFile" type="submit">UPLOAD FILES</button>
+                        <button class="importar" type="button">CHỈNH SỬA TÀI LIỆU</button>
+                        <button class="uploadFile" type="submit">TẢI TÀI LIỆU</button>
                     </div>
                 </div>
             </div>

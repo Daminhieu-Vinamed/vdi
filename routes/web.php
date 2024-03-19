@@ -12,11 +12,13 @@ Route::prefix('/')->group(function (){
             Route::get('/upload',[UploadController::class,'getUpload'])->name('getUpload');
             Route::post('/upload',[UploadController::class,'postUpload'])->name('postUpload');
         });
+
         Route::get('/logout',[AuthController::class,'logout'])->name('logout');
         Route::get('/notification',[UploadController::class,'notification'])->name('notification');
-        Route::name('user.')->group(function (){
-            Route::get('/create',[UserController::class,'create'])->name('create');
-            Route::post('/store',[UserController::class,'store'])->name('store');
+
+        Route::prefix('user')->name('user.')->group(function (){
+            Route::post('create',[UserController::class,'create'])->name('create');
+            Route::post('change-password',[UserController::class,'changePassword'])->name('change-password');
         });
     });
 

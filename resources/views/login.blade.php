@@ -17,18 +17,18 @@
                 @csrf
                 <div class="inputBox"> 
                     <input type="text" name="username"> 
-                    <i>Username</i> 
+                    <i>TÊN ĐĂNG NHẬP</i> 
                 </div>
                 <div class="inputBox"> 
                     <input type="password" name="password"> 
-                    <i>Password</i> 
+                    <i>MẬT KHẨU</i> 
                 </div> 
-                <div class="links"> 
+                {{-- <div class="links"> 
                     <a href="#">Forgot Password</a> 
                     <a href="#">Signup</a> 
-                </div> 
+                </div>  --}}
                 <div class="inputBox"> 
-                    <input type="submit" value="Login"> 
+                    <input type="submit" value="ĐĂNG NHẬP"> 
                 </div> 
                 @if (Session::has('error'))
                     <div class="error">

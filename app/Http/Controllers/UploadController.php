@@ -18,7 +18,7 @@ class UploadController extends Controller
         foreach ($request->file('files') as $file) {
             Storage::disk('f')->putFileAs(Auth::user()->username, $file, $file->getClientOriginalName());
         }
-        return redirect()->route('notification')->with('success', 'UPLOAD FILES SUCCESSFULLY !');
+        return redirect()->route('notification')->with('success', 'TẢI TÀI LIỆU LÊN THÀNH CÔNG !');
     }
 
     public function notification()

@@ -26,22 +26,22 @@ class UserRequest extends FormRequest
             'username' => 'required|unique:users,username',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:3',
-            'password_confirmation' => 'required_with:password|same:password'
+            're_password' => 'required_with:password|same:password'
         ];
     }
     public function messages()
     {
         return [
-            'name.required' => 'Required name',
-            'username.required' => 'Required username',
-            'username.unique' => 'Username already exists',
-            'email.required' => 'Required email',
-            'email.email' => 'Email invalidate',
-            'email.unique' => 'Email already exists',
-            'password.required' => 'Required password',
-            'password.min' => 'Password must be at least 3 characters',
-            'password_confirmation.required_with' => 'Required password confirmation',
-            'password_confirmation.same' => 'Re-password not same password',
+            'name.required' => 'Không được để trống',
+            'username.required' => 'Không được để trống',
+            'username.unique' => 'Tên đăng nhập đã tồn tại',
+            'email.required' => 'Không được để trống',
+            'email.email' => 'Không đúng định dạng',
+            'email.unique' => 'Email đã tồn tại',
+            'password.required' => 'Không được để trống',
+            'password.min' => 'Độ dài trên 3 ký tự',
+            're_password.required_with' => 'Không được để trống',
+            're_password.same' => 'Xác nhận mật khẩu không đúng',
         ];
     }
 }
