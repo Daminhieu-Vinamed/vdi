@@ -17,7 +17,9 @@
                 <div class="body" id="drop">
                     <i class="fa fa-file-text-o pointer-none" aria-hidden="true"></i>
                     <p class="pointer-none">
-                        Nhấn <a href="" id="triggerFile"><b>vào đây</b></a> để tải tài liệu
+                        Nhấn <a href="" id="triggerFile"><b>vào đây</b></a> để tải tài liệu <br>
+                        <b class="text-danger">Lưu ý:</b><br>
+                        Chỉ cho phép tải tài liệu có tổng dung lượng dưới 40MB
                     </p>
                     <input type="file" multiple="multiple" name="files[]" />
                 </div>
