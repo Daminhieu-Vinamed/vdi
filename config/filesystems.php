@@ -58,7 +58,7 @@ return [
 
         'f' => [
             'driver' => 'local',
-            'root' => 'F:\USERS', // Change this to your desired storage location on the D: drive
+            'root' => 'D:\USERS', // Change this to your desired storage location on the D: drive
         ],
     ],
 

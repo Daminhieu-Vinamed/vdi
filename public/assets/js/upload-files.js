@@ -16,12 +16,12 @@ jQuery(document).ready(function ($) {
             },
             success: function (response) {
                 alertCenterAutoClose.fire({
-                    text: response.notification,
+                    title: response.notification,
                 });
             },
             error: function () {
                 alertCenterError.fire({
-                    text: 'HÃY TẢI FILE CÓ DUNG LƯỢNG TỐI ĐA 40MB !',
+                    text: "HÃY TẢI FILE CÓ DUNG LƯỢNG TỐI ĐA 40MB !",
                 });
             },
         });
