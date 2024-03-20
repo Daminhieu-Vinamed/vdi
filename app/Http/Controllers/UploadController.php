@@ -31,10 +31,10 @@ class UploadController extends Controller
                 }
             }
             DB::commit();
-            return response()->json(['notification' => 'TẢI TÀI LIỆU LÊN THÀNH CÔNG !']);
+            return response()->json(['notification' => 'TẢI TÀI LIỆU THÀNH CÔNG !']);
         } catch (\Exception $e) {
             DB::rollBack();
-            return response()->json(['notification' => 'HÃY TẢI FILE CÓ DUNG LƯỢNG TỐI ĐA 40MB !']);
+            return response();
         }
     }
 
