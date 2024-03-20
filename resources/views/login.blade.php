@@ -5,7 +5,6 @@
   <meta charset="UTF-8"> 
   <title>VINAMED</title>
   <link rel="icon" href="{{ asset('favicon.ico') }}">
-  <link rel="stylesheet" href="./style.css"> 
   <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
  </head> 
  <body>

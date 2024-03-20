@@ -25,12 +25,12 @@
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <div class="btn btn-link d-md-none rounded-circle mr-3">
-                        <img src="{{ asset('assets/img/logo-icon.png') }}" height="30px" alt="">
+                        <a href="{{ route('upload.getUpload') }}"><img src="{{ asset('assets/img/logo-icon.png') }}" height="30px" alt=""></a>
                     </div>
 
                     <!-- Topbar Search -->
                     <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <img src="{{ asset('assets/img/logo.png') }}" height="40px" alt="">
+                        <a href="{{ route('upload.getUpload') }}"><img src="{{ asset('assets/img/logo.png') }}" height="40px" alt=""></a>
                     </div>
 
                     <!-- Topbar Navbar -->
