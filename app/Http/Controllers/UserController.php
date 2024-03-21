@@ -21,7 +21,7 @@ class UserController extends Controller
     {
         $users = User::select('id', 'name', 'username', 'email')->where('role', '!=', config('constants.number.two'))->orderBy('id', 'desc')->get();
         return DataTables::of($users)->addColumn('action', function ($user) {
-            return '<button type="button" class="btn btn-primary edit-user" data-toggle="modal" data-target="#editUserModal" id="' . $user['id'] . '">CHỈNH SỬA</button>';
+            return '<button type="button" class="btn btn-primary edit-user" data-toggle="modal" data-target="#editUserModal" id="' . $user['id'] . '">SỬA</button>';
         })->make(true);
     }
 
