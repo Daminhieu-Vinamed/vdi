@@ -21,6 +21,8 @@ Route::prefix('/')->group(function (){
             Route::get('/',[UserController::class,'list'])->name('list');
             Route::get('anyData',[UserController::class,'anyData'])->name('anyData');
             Route::post('create',[UserController::class,'create'])->name('create');
+            Route::post('edit',[UserController::class,'edit'])->name('edit');
+            Route::post('update',[UserController::class,'update'])->name('update');
         });
     });
 
