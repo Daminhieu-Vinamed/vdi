@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ChangePasswordRequest;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
@@ -18,10 +20,12 @@ class UserController extends Controller
     public function anyData()
     {
         $users = User::select('id', 'name', 'username', 'email')->where('role', '!=', config('constants.number.two'))->orderBy('id', 'desc')->get();
-        return DataTables::of($users)->make(true);
+        return DataTables::of($users)->addColumn('action', function ($user) {
+            return '<button type="button" class="btn btn-primary edit-user" data-toggle="modal" data-target="#editUserModal" id="' . $user['id'] . '">CHỈNH SỬA</button>';
+        })->make(true);
     }
 
-    public function create(UserRequest $request)
+    public function create(CreateUserRequest $request)
     {
         $user = new User();
         $user->fill($request->all());
@@ -39,5 +43,22 @@ class UserController extends Controller
         $userChangePassword->fill($request->all());
         $userChangePassword->save();
         return response()->json(['notification' => 'ĐỔI MẬT KHẨU THÀNH CÔNG !']);
+    }
+
+    public function edit(Request $request)
+    {
+        $user = new User();
+        $userEdit = $user->find($request->id);
+        return response()->json(['user' => $userEdit->getAttributes()]);
+    }
+
+    public function update(UpdateUserRequest $request)
+    {
+        $user = new User();
+        $userUpdate = $user->find($request->id);
+        $userUpdate->fill($request->all());
+        $userUpdate->password = Hash::make($request->password);
+        $userUpdate->save();
+        return response()->json(['notification' => 'CẬP NHẬT KHOẢN THÀNH CÔNG !']);
     }
 }

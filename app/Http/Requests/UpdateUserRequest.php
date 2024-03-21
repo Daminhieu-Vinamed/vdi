@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,13 +21,16 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $arrayValidate = [
             'name' => 'required',
-            'username' => 'required|unique:users,username',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:3',
-            're_password' => 'required_with:password|same:password'
+            'username' => 'required|unique:users,username,'.$this->id,
+            'email' => 'required|email|unique:users,email,'.$this->id,
         ];
+        if (array_key_exists('password', $this->all()) && array_key_exists('re_password', $this->all())) {
+            $arrayValidate['password'] = 'required|min:3';
+            $arrayValidate['re_password'] = 'required_with:password|same:password';
+        }
+        return $arrayValidate;
     }
     public function messages()
     {
