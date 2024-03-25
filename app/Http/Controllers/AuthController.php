@@ -15,13 +15,14 @@ class AuthController extends Controller
     public function postLogin(Request $request)
     {
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
-            return redirect()->route('upload.getUpload');
-        }else{
+            return redirect()->route('file.getUpload');
+        } else {
             return redirect()->back()->with('error', 'Sai tài khoản hoặc mật khẩu');
         }
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         Auth::logout();
         $request->session()->flush();
         $request->session()->invalidate();
