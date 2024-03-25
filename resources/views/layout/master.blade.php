@@ -25,12 +25,12 @@
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <div class="btn btn-link d-md-none rounded-circle mr-3">
-                        <a href="{{ route('upload.getUpload') }}"><img src="{{ asset('assets/img/logo-icon.png') }}" height="30px" alt=""></a>
+                        <a href="{{ route('file.getUpload') }}"><img src="{{ asset('assets/img/logo-icon.png') }}" height="30px" alt=""></a>
                     </div>
 
                     <!-- Topbar Search -->
                     <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <a href="{{ route('upload.getUpload') }}"><img src="{{ asset('assets/img/logo.png') }}" height="40px" alt=""></a>
+                        <a href="{{ route('file.getUpload') }}"><img src="{{ asset('assets/img/logo.png') }}" height="40px" alt=""></a>
                     </div>
 
                     <!-- Topbar Navbar -->
@@ -46,6 +46,10 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="{{ route('file.historyFile') }}">
+                                    <i class="fas fa-file-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Lịch sử tải liệu
+                                </a>
                                 @if (Auth::user()->role === config('constants.number.two'))
                                     <a class="dropdown-item" href="{{ route('user.list') }}">
                                         <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
