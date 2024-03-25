@@ -63,7 +63,7 @@ class FileController extends Controller
 
     public function anyData()
     {
-        $files = File::select('id', 'name', 'created_at', 'updated_at')->where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+        $files = File::select('id', 'name', 'created_at', 'updated_at')->where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->get();
         return DataTables::of($files)->removeColumn('id')
             ->editColumn('created_at', function ($file) {
                 return $file->created_at->format('d-m-Y');
