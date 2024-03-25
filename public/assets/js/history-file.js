@@ -11,6 +11,10 @@ $(document).ready(function () {
             { data: "updated_at", name: "updated_at" },
             { data: "updated_time", name: "updated_time" },
         ],
+        order: {
+            name: "updated_at",
+            dir: "desc",
+        },
         responsive: true,
         rowReorder: true,
         scrollX: true,

@@ -11,6 +11,10 @@ $(document).ready(function () {
             { data: "email", name: "email" },
             { data: "action", name: "action" },
         ],
+        order: {
+            name: "id",
+            dir: "desc",
+        },
         responsive: true,
         rowReorder: true,
         scrollX: true,
@@ -34,7 +38,7 @@ $(document).ready(function () {
             zeroRecords: "Không có tài khoản nào có dữ liệu bạn tìm kiếm",
         },
     });
-    $(document).on('click', '.edit-user', function () {
+    $(document).on("click", ".edit-user", function () {
         var id = $(this).attr("id");
 
         $.ajax({
@@ -61,9 +65,9 @@ $(document).ready(function () {
         });
     });
 
-    $(document).on('click', '.add-password-user-edit', function () {
-        $('.change-password-user-edit > .col').remove();
-        $('.change-password-user-edit').append(`<div class="col">
+    $(document).on("click", ".add-password-user-edit", function () {
+        $(".change-password-user-edit > .col").remove();
+        $(".change-password-user-edit").append(`<div class="col">
                                                     <label for="password">MẬT KHẨU</label>
                                                     <input type="password" class="form-control" id="password-edit" aria-describedby="password" placeholder="Enter password">
                                                     <small class="password-error-edit form-text text-danger"></small>
@@ -72,30 +76,33 @@ $(document).ready(function () {
                                                     <label for="re-password">XÁC NHẬN KHẨU KHẨU</label>
                                                     <input type="password" class="form-control" id="re-password-edit" aria-describedby="re-password" placeholder="Enter re-password">
                                                     <small class="re-password-error-edit form-text text-danger"></small>
-                                                </div>`)
-        $('.modal-user-edit').append(`<div class="row mb-3">
+                                                </div>`);
+        $(".modal-user-edit").append(`<div class="row mb-3">
                                         <div class="col">
                                             <button class="btn btn-danger remove-password-user-edit" type="button">HỦY ĐỔI MẬT KHẨU</button>
                                         </div>
-                                    </div>`)
+                                    </div>`);
     });
 
-    $(document).on('click', '.remove-password-user-edit', function () {
-        $('.change-password-user-edit > .col').remove();
-        $('.change-password-user-edit').append(`<div class="col">
+    $(document).on("click", ".remove-password-user-edit", function () {
+        $(".change-password-user-edit > .col").remove();
+        $(".change-password-user-edit").append(`<div class="col">
                                                     <button class="btn btn-primary add-password-user-edit" type="button">ĐỔI MẬT KHẨU</button>
                                                 </div>`);
-        $('.modal-user-edit > .row').last().remove();
+        $(".modal-user-edit > .row").last().remove();
     });
 
     $(".update-user").click(function () {
         var valueUpdate = {
             id: $("#id-edit").val(),
-            name : $("#name-edit").val(),
+            name: $("#name-edit").val(),
             username: $("#username-edit").val(),
-            email: $("#email-edit").val()
-        }
-        if ($("#password-edit").length > 0 && $("#re-password-edit").length > 0) {
+            email: $("#email-edit").val(),
+        };
+        if (
+            $("#password-edit").length > 0 &&
+            $("#re-password-edit").length > 0
+        ) {
             valueUpdate.password = $("#password-edit").val();
             valueUpdate.re_password = $("#re-password-edit").val();
         }
@@ -111,11 +118,11 @@ $(document).ready(function () {
                 $(".username-error-edit").text("");
                 $(".email-error-edit").text("");
 
-                $('.change-password-user-edit > .col').remove();
-                $('.change-password-user-edit').append(`<div class="col">
+                $(".change-password-user-edit > .col").remove();
+                $(".change-password-user-edit").append(`<div class="col">
                                                             <button class="btn btn-primary add-password-user-edit" type="button">ĐỔI MẬT KHẨU</button>
                                                         </div>`);
-                $('.modal-user-edit > .row').last().remove();
+                $(".modal-user-edit > .row").last().remove();
 
                 tableUser.ajax.reload();
 
